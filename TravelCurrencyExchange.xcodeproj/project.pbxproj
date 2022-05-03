@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		311FF253282027AA0030ADC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FF252282027AA0030ADC6 /* AppDelegate.swift */; };
 		311FF255282027AA0030ADC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FF254282027AA0030ADC6 /* SceneDelegate.swift */; };
-		311FF257282027AA0030ADC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FF256282027AA0030ADC6 /* ViewController.swift */; };
+		311FF257282027AA0030ADC6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FF256282027AA0030ADC6 /* MainViewController.swift */; };
 		311FF25A282027AA0030ADC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311FF258282027AA0030ADC6 /* Main.storyboard */; };
 		311FF25C282027AE0030ADC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311FF25B282027AE0030ADC6 /* Assets.xcassets */; };
 		311FF25F282027AE0030ADC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311FF25D282027AE0030ADC6 /* LaunchScreen.storyboard */; };
+		31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */; };
+		31F169A52820E759006DF09A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 31F169A42820E759006DF09A /* Then */; };
+		31F169A82820E768006DF09A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 31F169A72820E768006DF09A /* SnapKit */; };
+		31F169AB2820EDF7006DF09A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169AA2820EDF7006DF09A /* Extension.swift */; };
+		31F169AE2820F443006DF09A /* NumberPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169AD2820F443006DF09A /* NumberPadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		311FF24F282027AA0030ADC6 /* TravelCurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelCurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		311FF252282027AA0030ADC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		311FF254282027AA0030ADC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		311FF256282027AA0030ADC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		311FF256282027AA0030ADC6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		311FF259282027AA0030ADC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		311FF25B282027AE0030ADC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		311FF25E282027AE0030ADC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		311FF260282027AE0030ADC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHomeViewController.swift; sourceTree = "<group>"; };
+		31F169AA2820EDF7006DF09A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		31F169AD2820F443006DF09A /* NumberPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31F169A52820E759006DF09A /* Then in Frameworks */,
+				31F169A82820E768006DF09A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,10 +66,10 @@
 		311FF251282027AA0030ADC6 /* TravelCurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
+				31F169A92820EDED006DF09A /* UItility */,
 				311FF266282027C40030ADC6 /* View */,
 				311FF252282027AA0030ADC6 /* AppDelegate.swift */,
 				311FF254282027AA0030ADC6 /* SceneDelegate.swift */,
-				311FF256282027AA0030ADC6 /* ViewController.swift */,
 				311FF258282027AA0030ADC6 /* Main.storyboard */,
 				311FF25B282027AE0030ADC6 /* Assets.xcassets */,
 				311FF25D282027AE0030ADC6 /* LaunchScreen.storyboard */,
@@ -71,8 +81,35 @@
 		311FF266282027C40030ADC6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				311FF256282027AA0030ADC6 /* MainViewController.swift */,
+				31F169A02820E586006DF09A /* Core */,
+				31F169AC2820F428006DF09A /* Component */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		31F169A02820E586006DF09A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		31F169A92820EDED006DF09A /* UItility */ = {
+			isa = PBXGroup;
+			children = (
+				31F169AA2820EDF7006DF09A /* Extension.swift */,
+			);
+			path = UItility;
+			sourceTree = "<group>";
+		};
+		31F169AC2820F428006DF09A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				31F169AD2820F443006DF09A /* NumberPadViewController.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +128,10 @@
 			dependencies = (
 			);
 			name = TravelCurrencyExchange;
+			packageProductDependencies = (
+				31F169A42820E759006DF09A /* Then */,
+				31F169A72820E768006DF09A /* SnapKit */,
+			);
 			productName = TravelCurrencyExchange;
 			productReference = 311FF24F282027AA0030ADC6 /* TravelCurrencyExchange.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +160,10 @@
 				Base,
 			);
 			mainGroup = 311FF246282027AA0030ADC6;
+			packageReferences = (
+				31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */,
+				31F169A62820E768006DF09A /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 311FF250282027AA0030ADC6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -146,7 +191,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				311FF257282027AA0030ADC6 /* ViewController.swift in Sources */,
+				31F169AE2820F443006DF09A /* NumberPadViewController.swift in Sources */,
+				31F169AB2820EDF7006DF09A /* Extension.swift in Sources */,
+				311FF257282027AA0030ADC6 /* MainViewController.swift in Sources */,
+				31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */,
 				311FF253282027AA0030ADC6 /* AppDelegate.swift in Sources */,
 				311FF255282027AA0030ADC6 /* SceneDelegate.swift in Sources */,
 			);
@@ -300,7 +348,6 @@
 				INFOPLIST_FILE = TravelCurrencyExchange/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -328,7 +375,6 @@
 				INFOPLIST_FILE = TravelCurrencyExchange/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -366,6 +412,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		31F169A62820E768006DF09A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		31F169A42820E759006DF09A /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		31F169A72820E768006DF09A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31F169A62820E768006DF09A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 311FF247282027AA0030ADC6 /* Project object */;
 }
