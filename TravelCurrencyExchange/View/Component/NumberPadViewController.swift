@@ -175,7 +175,14 @@ class NumberPadViewController: UIView {
     
     // MARK: - Action
     @objc func numberClick(sender: UIButton) {
-        print(sender.titleLabel?.text!)
+//        let exchangeController = ExchangeHomeViewController()
+        
+        if let clickNum = sender.titleLabel?.text {
+            DispatchQueue.main.async { [weak self] in
+//                exchangeController.test(num: clickNum)
+                ExchangeHomeViewController().test(num: clickNum)
+            }
+        }
     }
     
     //MARK: - LifeCycle

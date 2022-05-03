@@ -17,6 +17,8 @@ class ExchangeHomeViewController: UIViewController {
     var exitBtn: UIBarButtonItem!
     var picker: UIPickerView!
     
+    var inputNumber = "0"
+    
     //MARK: - Properties
     private let numberPadViewController = NumberPadViewController()
     
@@ -25,6 +27,7 @@ class ExchangeHomeViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .systemBlue
         $0.layer.cornerRadius = 10
+        $0.addTarget(self, action: #selector(addData), for: .touchUpInside)
     }
     
     private let noticeLabel = UILabel().then {
@@ -48,7 +51,7 @@ class ExchangeHomeViewController: UIViewController {
     }
     
     private let inputMoneyLabel = UILabel().then {
-        $0.text = "0"
+        //        $0.text = "0"
         $0.textAlignment = .right
         $0.font = .systemFont(ofSize: 70, weight: .bold)
         $0.textColor = .white
@@ -75,10 +78,15 @@ class ExchangeHomeViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewConfigure()
         layout()
         pickerConfigure()
+        //        inputMoneyLabel.text = inputNumber
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //        inputMoneyLabel.text = inputNumber
     }
     
     // MARK: - viewConfigure
@@ -88,6 +96,18 @@ class ExchangeHomeViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
+    }
+    
+    @objc func addData() {
+        inputMoneyLabel.text = "111"
+    }
+    
+    func test(num: String) {
+        print(num)
+        self.inputMoneyLabel.text = "num"
+        self.inputNumber = num
+        self.view.layoutIfNeeded()
+        //        viewWillAppear(true)
     }
     
     // MARK: - Layout
