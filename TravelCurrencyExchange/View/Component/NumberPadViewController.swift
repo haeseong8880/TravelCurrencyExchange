@@ -15,7 +15,7 @@ class NumberPadViewController: UIView {
     //MARK: - Properties
     private let numberPad7 = UILabel().then {
         $0.text = "7"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -24,7 +24,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad8 = UILabel().then {
         $0.text = "8"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .cyan
@@ -33,7 +33,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad9 = UILabel().then {
         $0.text = "9"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -42,7 +42,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad4 = UILabel().then {
         $0.text = "4"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -51,7 +51,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad5 = UILabel().then {
         $0.text = "5"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -60,7 +60,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad6 = UILabel().then {
         $0.text = "6"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -69,7 +69,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad1 = UILabel().then {
         $0.text = "1"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -78,7 +78,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad2 = UILabel().then {
         $0.text = "2"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -87,7 +87,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad3 = UILabel().then {
         $0.text = "3"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -96,7 +96,7 @@ class NumberPadViewController: UIView {
     
     private let numberPad0 = UILabel().then {
         $0.text = "0"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -105,7 +105,7 @@ class NumberPadViewController: UIView {
     
     private let numberPadPoint = UILabel().then {
         $0.text = "."
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -114,7 +114,7 @@ class NumberPadViewController: UIView {
     
     private let numberPadClear = UILabel().then {
         $0.text = "C"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -123,7 +123,7 @@ class NumberPadViewController: UIView {
     
     private let padDivision = UILabel().then {
         $0.text = "÷"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -132,7 +132,7 @@ class NumberPadViewController: UIView {
     
     private let padMultiply = UILabel().then {
         $0.text = "×"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -141,7 +141,7 @@ class NumberPadViewController: UIView {
     
     private let padMinus = UILabel().then {
         $0.text = "-"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -150,7 +150,7 @@ class NumberPadViewController: UIView {
     
     private let padPlus = UILabel().then {
         $0.text = "+"
-        $0.font = .systemFont(ofSize: 70, weight: .bold)
+        $0.font = .systemFont(ofSize: 60, weight: .bold)
         $0.textColor = .white
         $0.textAlignment = .center
         $0.backgroundColor = .red
@@ -162,6 +162,7 @@ class NumberPadViewController: UIView {
         super.init(frame: frame)
         self.backgroundColor = .brown
         layout()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -174,101 +175,106 @@ class NumberPadViewController: UIView {
             self.addSubview($0)
         }
         
+        let screenWidth = UIScreen.main.bounds.size.width
+        
         numberPad7.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(30)
-            $0.leading.equalToSuperview().inset(20)
-            $0.width.equalTo(80)
+            $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
+            $0.leading.equalToSuperview().inset(15)
+            $0.width.equalTo(screenWidth / 4 - 15)
         }
         
         numberPad8.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(30)
-            $0.leading.equalTo(numberPad7.snp.trailing).offset(20)
-            $0.width.equalTo(80)
+            $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
+            $0.width.equalTo(screenWidth / 4 - 15)
+//            $0.centerX.equalTo(numberPad7.snp.trailing).offset(50)
+            $0.leading.equalTo(numberPad7.snp.trailing).offset(10)
         }
         
         numberPad9.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(30)
-            $0.leading.equalTo(numberPad8.snp.trailing).offset(20)
-            $0.width.equalTo(80)
+            $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
+//            $0.centerX.equalTo(numberPad8.snp.trailing).offset(50)
+            $0.leading.equalTo(numberPad8.snp.trailing).offset(10)
+            $0.width.equalTo(screenWidth / 4 - 15)
         }
         
         padDivision.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(30)
-            $0.leading.equalTo(numberPad9.snp.trailing).offset(20)
-            $0.width.equalTo(80)
+            $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
+//            $0.centerX.equalTo(numberPad9.snp.trailing).offset(50)
+            $0.leading.equalTo(numberPad9.snp.trailing).offset(10)
+            $0.width.equalTo(screenWidth / 4 - 15)
         }
+        //
+        //        numberPad4.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
+        //            $0.leading.equalToSuperview().inset(15)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        numberPad5.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
+        //            $0.centerX.equalTo(numberPad4.snp.trailing).offset(50)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        numberPad6.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
+        //            $0.centerX.equalTo(numberPad5.snp.trailing).offset(50)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        padMultiply.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
+        //            $0.centerX.equalTo(numberPad6.snp.trailing).offset(50)
+        //            $0.width.equalTo(80)
+        //        }
         
-        numberPad4.snp.makeConstraints {
-            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().inset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPad5.snp.makeConstraints {
-            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad4.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPad6.snp.makeConstraints {
-            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad5.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        padMultiply.snp.makeConstraints {
-            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad6.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPad1.snp.makeConstraints {
-            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().inset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPad2.snp.makeConstraints {
-            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad1.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPad3.snp.makeConstraints {
-            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad2.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        padMinus.snp.makeConstraints {
-            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad3.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPad0.snp.makeConstraints {
-            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().inset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPadPoint.snp.makeConstraints {
-            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad0.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        numberPadClear.snp.makeConstraints {
-            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPadPoint.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
-        
-        padPlus.snp.makeConstraints {
-            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPadClear.snp.trailing).offset(20)
-            $0.width.equalTo(80)
-        }
+        //        numberPad1.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
+        //            $0.leading.equalToSuperview().inset(10)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        numberPad2.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
+        //            $0.leading.equalTo(numberPad1.snp.trailing).offset(10)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        numberPad3.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
+        //            $0.leading.equalTo(numberPad2.snp.trailing).offset(10)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        padMinus.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
+        //            $0.leading.equalTo(numberPad3.snp.trailing).offset(10)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        numberPad0.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
+        //            $0.leading.equalToSuperview().inset(10)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        numberPadPoint.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
+        //            $0.leading.equalTo(numberPad0.snp.trailing).offset(10)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        numberPadClear.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
+        //            $0.leading.equalTo(numberPadPoint.snp.trailing).offset(10)
+        //            $0.width.equalTo(80)
+        //        }
+        //
+        //        padPlus.snp.makeConstraints {
+        //            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
+        //            $0.leading.equalTo(numberPadClear.snp.trailing).offset(10)
+        //            $0.width.equalTo(80)
+        //        }
         
     }
 }
