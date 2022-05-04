@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol sendDataDelegate {
-    func sendData(clickNum: String, sign: Bool)
+    func sendData(clickNum: String, tag: Int)
 }
 
 class NumberPadViewController: UIView {
@@ -26,7 +26,9 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 7
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
+        
     }
     
     private let numberPad8 = UIButton().then {
@@ -36,6 +38,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 8
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -46,6 +49,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 9
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -56,6 +60,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 4
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -66,6 +71,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 5
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -76,6 +82,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 6
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -86,6 +93,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 1
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -96,6 +104,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 2
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -106,6 +115,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 3
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -116,6 +126,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 0
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -126,6 +137,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 10
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -136,6 +148,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 11
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -146,6 +159,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 12
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -156,6 +170,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 13
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -166,6 +181,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 14
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -176,14 +192,16 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.tag = 15
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
     // MARK: - Action
     @objc func numberClick(sender: UIButton) {
         if let clickNum = sender.titleLabel?.text {
-            let convertor = Int(clickNum)
-            self.delegate?.sendData(clickNum: clickNum, sign: convertor != nil ? true : false)
+            if let convertor = Int(clickNum) != nil ? true : false {
+                self.delegate?.sendData(clickNum: clickNum, tag: sender.tag)
+            }
         }
     }
     

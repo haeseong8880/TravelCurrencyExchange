@@ -52,7 +52,7 @@ class ExchangeHomeViewController: UIViewController {
     }
     
     private let inputMoneyLabel = UILabel().then {
-        $0.text = "0"
+        $0.text = ""
         $0.textAlignment = .right
         $0.font = .systemFont(ofSize: 70, weight: .bold)
         $0.textColor = .white
@@ -211,13 +211,38 @@ extension ExchangeHomeViewController : UIPickerViewDelegate, UIPickerViewDataSou
 extension ExchangeHomeViewController: sendDataDelegate {
     
     
-    func sendData(clickNum: String, sign: Bool) {
+    func sendData(clickNum: String, tag: Int) {
         let num = Int(clickNum)
         let labelNum = Int(inputMoneyLabel.text!)
-        if sign {
-            
-        } else {
-            
+        print(tag)
+        if 0 <= tag && tag <= 9 {
+            if !inputMoneyLabel.text!.isEmpty {
+                inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
+            } else {
+                inputMoneyLabel.text = "\(clickNum)"
+            }
+        }else {
+            if tag == 10 {
+                print("tag === .")
+            } else if tag == 11{
+                print("tag === C")
+            } else if tag == 12 {
+                print("tag === %")
+            } else if tag == 13 {
+                print("tag === *")
+            } else if tag == 14 {
+                print("tag === -")
+            } else if tag == 15 {
+                print("tag === +")
+            }
         }
+        //        if sign {
+        //            inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
+        //        } else {
+        //            if num != nil {
+        //                inputMoneyLabel.text = "\(labelNum! + num!)"
+        //            }
+        ////            inputMoneyLabel.text  = String(num + labelNum)
+        //        }
     }
 }
