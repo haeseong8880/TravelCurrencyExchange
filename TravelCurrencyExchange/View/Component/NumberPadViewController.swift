@@ -28,7 +28,6 @@ class NumberPadViewController: UIView {
         $0.contentHorizontalAlignment = .center
         $0.tag = 7
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-        
     }
     
     private let numberPad8 = UIButton().then {
@@ -196,6 +195,39 @@ class NumberPadViewController: UIView {
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
+    private let equalSignPlus = UIButton().then {
+        $0.backgroundColor = .systemOrange
+        $0.layer.cornerRadius = 13
+        $0.setTitle("=", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
+        $0.contentHorizontalAlignment = .center
+        $0.tag = 16
+        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
+    }
+//
+//    private let padPlus = UIButton().then {
+//        $0.backgroundColor = .systemOrange
+//        $0.layer.cornerRadius = 13
+//        $0.setTitle("+", for: .normal)
+//        $0.setTitleColor(.white, for: .normal)
+//        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
+//        $0.contentHorizontalAlignment = .center
+//        $0.tag = 15
+//        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
+//    }
+//
+//    private let padPlus = UIButton().then {
+//        $0.backgroundColor = .systemOrange
+//        $0.layer.cornerRadius = 13
+//        $0.setTitle("+", for: .normal)
+//        $0.setTitleColor(.white, for: .normal)
+//        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
+//        $0.contentHorizontalAlignment = .center
+//        $0.tag = 15
+//        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
+//    }
+    
     // MARK: - Action
     @objc func numberClick(sender: UIButton) {
         if let clickNum = sender.titleLabel?.text {
@@ -219,7 +251,7 @@ class NumberPadViewController: UIView {
     
     //MARK: - Layout
     private func layout() {
-        [ numberPad7, numberPad8, numberPad9, numberPad6, numberPad5, numberPad4, numberPad3, numberPad2, numberPad1, numberPad0, numberPadPoint, numberPadClear, padDivision, padMultiply, padMinus, padPlus ].forEach {
+        [ numberPad7, numberPad8, numberPad9, numberPad6, numberPad5, numberPad4, numberPad3, numberPad2, numberPad1, numberPad0, numberPadPoint, numberPadClear, padDivision, padMultiply, padMinus, padPlus, equalSignPlus ].forEach {
             self.addSubview($0)
         }
         
@@ -338,5 +370,11 @@ class NumberPadViewController: UIView {
             $0.height.equalTo(screenHight / 8 - 30)
         }
         
+        equalSignPlus.snp.makeConstraints {
+            $0.top.equalTo(numberPad0.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(10)
+            $0.height.equalTo(screenHight / 8 - 30)
+        }
     }
 }

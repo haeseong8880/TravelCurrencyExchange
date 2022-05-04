@@ -17,8 +17,8 @@ class ExchangeHomeViewController: UIViewController {
     var exitBtn: UIBarButtonItem!
     var picker: UIPickerView!
     
-    var tmp = 0
-    var cal = false
+    var calSignTagNum: Int?
+    var beforeNum: Double?
     
     //MARK: - Properties
     private let numberPadViewController = NumberPadViewController()
@@ -59,14 +59,6 @@ class ExchangeHomeViewController: UIViewController {
         $0.backgroundColor = .brown
     }
     
-    private let calcuratorLabel = UILabel().then {
-        $0.text = "계산된 환율 자리!!"
-        $0.textAlignment = .right
-        $0.font = .systemFont(ofSize: 30, weight: .bold)
-        $0.textColor = .white
-        $0.backgroundColor = .systemBlue
-    }
-    
     private let usedTypeTextField = UITextField().then {
         $0.font = .systemFont(ofSize: 22, weight: .light)
         $0.borderStyle = .roundedRect
@@ -101,7 +93,7 @@ class ExchangeHomeViewController: UIViewController {
     
     // MARK: - Layout
     private func layout() {
-        [ registerButton, noticeLabel, standardDate, usedTypeTextField, exchangeLabel, inputMoneyLabel, calcuratorLabel, numberPadViewController ].forEach {
+        [ registerButton, noticeLabel, standardDate, usedTypeTextField, exchangeLabel, inputMoneyLabel, numberPadViewController ].forEach {
             view.addSubview($0)
         }
         
@@ -146,14 +138,8 @@ class ExchangeHomeViewController: UIViewController {
             $0.height.equalTo(80)
         }
         
-        calcuratorLabel.snp.makeConstraints {
-            $0.top.equalTo(inputMoneyLabel.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(10)
-            $0.height.equalTo(50)
-        }
-        
         numberPadViewController.snp.makeConstraints {
-            $0.top.equalTo(calcuratorLabel.snp.bottom).offset(10)
+            $0.top.equalTo(inputMoneyLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
@@ -212,37 +198,55 @@ extension ExchangeHomeViewController: sendDataDelegate {
     
     
     func sendData(clickNum: String, tag: Int) {
-        let num = Int(clickNum)
-        let labelNum = Int(inputMoneyLabel.text!)
+        var num = Double(clickNum) ?? 0.0
+        var labelNum = Double(inputMoneyLabel.text!) ?? 0.0
         print(tag)
         if 0 <= tag && tag <= 9 {
-            if !inputMoneyLabel.text!.isEmpty {
-                inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
+            if calSignTagNum != nil {
+                // 추후 계산식 넣기
+                
+                inputMoneyLabel.text = "\(num + labelNum)"
+                calSignTagNum = nil
             } else {
-                inputMoneyLabel.text = "\(clickNum)"
+                print("aaaaaaa")
+                if !inputMoneyLabel.text!.isEmpty {
+                    inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
+                } else {
+                    inputMoneyLabel.text = "\(clickNum)"
+                }
             }
         }else {
-            if tag == 10 {
-                print("tag === .")
-            } else if tag == 11{
-                print("tag === C")
+            print("labelnum =====> \(labelNum)")
+            print("num =======> \(num)")
+            calSignTagNum = tag
+            if tag == 11 {
+                inputMoneyLabel.text = ""
+                calSignTagNum = nil
             } else if tag == 12 {
-                print("tag === %")
+                
             } else if tag == 13 {
-                print("tag === *")
+                
             } else if tag == 14 {
-                print("tag === -")
+                
             } else if tag == 15 {
-                print("tag === +")
+                beforeNum = labelNum
+                inputMoneyLabel.text = ""
+                calSignTagNum = tag
             }
+//            if tag == 10 {
+//                print("tag === .")
+//            } else if tag == 11{
+//                print("tag === C")
+//            } else if tag == 12 {
+//                print("tag === %")
+//            } else if tag == 13 {
+//                print("tag === *")
+//            } else if tag == 14 {
+//                print("tag === -")
+//            } else if tag == 15 {
+//                print("tag === +")
+////                inputMoneyLabel.text = "\(num + labelNum)"
+//            }
         }
-        //        if sign {
-        //            inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
-        //        } else {
-        //            if num != nil {
-        //                inputMoneyLabel.text = "\(labelNum! + num!)"
-        //            }
-        ////            inputMoneyLabel.text  = String(num + labelNum)
-        //        }
     }
 }
