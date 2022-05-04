@@ -200,24 +200,23 @@ extension ExchangeHomeViewController: sendDataDelegate {
     func sendData(clickNum: String, tag: Int) {
         var num = Double(clickNum) ?? 0.0
         var labelNum = Double(inputMoneyLabel.text!) ?? 0.0
-        print(tag)
         if 0 <= tag && tag <= 9 {
-            if calSignTagNum != nil {
-                // 추후 계산식 넣기
-                
-                inputMoneyLabel.text = "\(num + labelNum)"
-                calSignTagNum = nil
-            } else {
+//            if calSignTagNum != nil {
+//                // 추후 계산식 넣기
+//
+//                inputMoneyLabel.text = "\(num + labelNum)"
+//                calSignTagNum = nil
+//            } else {
                 print("aaaaaaa")
                 if !inputMoneyLabel.text!.isEmpty {
                     inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
                 } else {
                     inputMoneyLabel.text = "\(clickNum)"
                 }
-            }
+//            }
         }else {
-            print("labelnum =====> \(labelNum)")
-            print("num =======> \(num)")
+//            print("labelnum =====> \(labelNum)")
+//            print("num =======> \(num)")
             calSignTagNum = tag
             if tag == 11 {
                 inputMoneyLabel.text = ""
@@ -232,21 +231,9 @@ extension ExchangeHomeViewController: sendDataDelegate {
                 beforeNum = labelNum
                 inputMoneyLabel.text = ""
                 calSignTagNum = tag
+            } else if tag == 16 {
+                inputMoneyLabel.text = "\(beforeNum! + labelNum)"
             }
-//            if tag == 10 {
-//                print("tag === .")
-//            } else if tag == 11{
-//                print("tag === C")
-//            } else if tag == 12 {
-//                print("tag === %")
-//            } else if tag == 13 {
-//                print("tag === *")
-//            } else if tag == 14 {
-//                print("tag === -")
-//            } else if tag == 15 {
-//                print("tag === +")
-////                inputMoneyLabel.text = "\(num + labelNum)"
-//            }
         }
     }
 }

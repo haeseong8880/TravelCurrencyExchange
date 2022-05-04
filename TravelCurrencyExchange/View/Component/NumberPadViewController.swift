@@ -205,28 +205,6 @@ class NumberPadViewController: UIView {
         $0.tag = 16
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
-//
-//    private let padPlus = UIButton().then {
-//        $0.backgroundColor = .systemOrange
-//        $0.layer.cornerRadius = 13
-//        $0.setTitle("+", for: .normal)
-//        $0.setTitleColor(.white, for: .normal)
-//        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
-//        $0.contentHorizontalAlignment = .center
-//        $0.tag = 15
-//        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-//    }
-//
-//    private let padPlus = UIButton().then {
-//        $0.backgroundColor = .systemOrange
-//        $0.layer.cornerRadius = 13
-//        $0.setTitle("+", for: .normal)
-//        $0.setTitleColor(.white, for: .normal)
-//        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
-//        $0.contentHorizontalAlignment = .center
-//        $0.tag = 15
-//        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-//    }
     
     // MARK: - Action
     @objc func numberClick(sender: UIButton) {
