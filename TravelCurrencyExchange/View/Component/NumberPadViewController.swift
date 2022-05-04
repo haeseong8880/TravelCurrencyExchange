@@ -10,7 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
+protocol sendDataDelegate {
+    func sendData(clickNum: String)
+}
+
 class NumberPadViewController: UIView {
+    
+    var delegate: sendDataDelegate?
     
     //MARK: - Properties
     private let numberPad7 = UIButton().then {
@@ -175,13 +181,8 @@ class NumberPadViewController: UIView {
     
     // MARK: - Action
     @objc func numberClick(sender: UIButton) {
-//        let exchangeController = ExchangeHomeViewController()
-        
         if let clickNum = sender.titleLabel?.text {
-            DispatchQueue.main.async { [weak self] in
-//                exchangeController.test(num: clickNum)
-                ExchangeHomeViewController().test(num: clickNum)
-            }
+            self.delegate?.sendData(clickNum: clickNum)
         }
     }
     

@@ -51,7 +51,7 @@ class ExchangeHomeViewController: UIViewController {
     }
     
     private let inputMoneyLabel = UILabel().then {
-        //        $0.text = "0"
+        $0.text = "0"
         $0.textAlignment = .right
         $0.font = .systemFont(ofSize: 70, weight: .bold)
         $0.textColor = .white
@@ -81,12 +81,14 @@ class ExchangeHomeViewController: UIViewController {
         viewConfigure()
         layout()
         pickerConfigure()
-        //        inputMoneyLabel.text = inputNumber
+        
+        let numberPad = numberPadViewController
+        numberPad.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        inputMoneyLabel.text = inputNumber
+        inputMoneyLabel.text = inputNumber
     }
     
     // MARK: - viewConfigure
@@ -99,15 +101,6 @@ class ExchangeHomeViewController: UIViewController {
     }
     
     @objc func addData() {
-        inputMoneyLabel.text = "111"
-    }
-    
-    func test(num: String) {
-        print(num)
-        self.inputMoneyLabel.text = "num"
-        self.inputNumber = num
-        self.view.layoutIfNeeded()
-        //        viewWillAppear(true)
     }
     
     // MARK: - Layout
@@ -215,5 +208,11 @@ extension ExchangeHomeViewController : UIPickerViewDelegate, UIPickerViewDataSou
         print(pickerList[row])
         usedTypeTextField.text = pickerList[row]
         self.view.endEditing(true)
+    }
+}
+
+extension ExchangeHomeViewController: sendDataDelegate {
+    func sendData(clickNum: String) {
+        inputMoneyLabel.text = clickNum
     }
 }
