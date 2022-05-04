@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol sendDataDelegate {
-    func sendData(clickNum: String)
+    func sendData(clickNum: String, sign: Bool)
 }
 
 class NumberPadViewController: UIView {
@@ -182,7 +182,8 @@ class NumberPadViewController: UIView {
     // MARK: - Action
     @objc func numberClick(sender: UIButton) {
         if let clickNum = sender.titleLabel?.text {
-            self.delegate?.sendData(clickNum: clickNum)
+            let convertor = Int(clickNum)
+            self.delegate?.sendData(clickNum: clickNum, sign: convertor != nil ? true : false)
         }
     }
     

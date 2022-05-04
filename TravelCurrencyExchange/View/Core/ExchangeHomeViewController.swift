@@ -17,7 +17,8 @@ class ExchangeHomeViewController: UIViewController {
     var exitBtn: UIBarButtonItem!
     var picker: UIPickerView!
     
-    var inputNumber = "0"
+    var tmp = 0
+    var cal = false
     
     //MARK: - Properties
     private let numberPadViewController = NumberPadViewController()
@@ -84,11 +85,6 @@ class ExchangeHomeViewController: UIViewController {
         
         let numberPad = numberPadViewController
         numberPad.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        inputMoneyLabel.text = inputNumber
     }
     
     // MARK: - viewConfigure
@@ -211,8 +207,17 @@ extension ExchangeHomeViewController : UIPickerViewDelegate, UIPickerViewDataSou
     }
 }
 
+//MARK: - Calculator
 extension ExchangeHomeViewController: sendDataDelegate {
-    func sendData(clickNum: String) {
-        inputMoneyLabel.text = clickNum
+    
+    
+    func sendData(clickNum: String, sign: Bool) {
+        let num = Int(clickNum)
+        let labelNum = Int(inputMoneyLabel.text!)
+        if sign {
+            
+        } else {
+            
+        }
     }
 }
