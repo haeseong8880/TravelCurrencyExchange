@@ -201,38 +201,30 @@ extension ExchangeHomeViewController: sendDataDelegate {
         var num = Double(clickNum) ?? 0.0
         var labelNum = Double(inputMoneyLabel.text!) ?? 0.0
         if 0 <= tag && tag <= 9 {
-//            if calSignTagNum != nil {
-//                // 추후 계산식 넣기
-//
-//                inputMoneyLabel.text = "\(num + labelNum)"
-//                calSignTagNum = nil
-//            } else {
-                print("aaaaaaa")
-                if !inputMoneyLabel.text!.isEmpty {
-                    inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
-                } else {
-                    inputMoneyLabel.text = "\(clickNum)"
-                }
-//            }
+            if !inputMoneyLabel.text!.isEmpty {
+                inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
+            } else {
+                inputMoneyLabel.text = "\(clickNum)"
+            }
         }else {
-//            print("labelnum =====> \(labelNum)")
-//            print("num =======> \(num)")
-            calSignTagNum = tag
             if tag == 11 {
                 inputMoneyLabel.text = ""
                 calSignTagNum = nil
-            } else if tag == 12 {
-                
-            } else if tag == 13 {
-                
-            } else if tag == 14 {
-                
-            } else if tag == 15 {
-                beforeNum = labelNum
-                inputMoneyLabel.text = ""
+                beforeNum = nil
+            } else if 12 <= tag && tag <= 15{
                 calSignTagNum = tag
+                inputMoneyLabel.text = ""
+                beforeNum = labelNum
             } else if tag == 16 {
-                inputMoneyLabel.text = "\(beforeNum! + labelNum)"
+                if calSignTagNum == 12 {
+                    inputMoneyLabel.text = "\(beforeNum! / labelNum)"
+                } else if calSignTagNum == 13 {
+                    inputMoneyLabel.text = "\(beforeNum! * labelNum)"
+                } else if calSignTagNum == 14 {
+                    inputMoneyLabel.text = "\(beforeNum! - labelNum)"
+                } else if calSignTagNum == 15 {
+                    inputMoneyLabel.text = "\(beforeNum! + labelNum)"
+                }
             }
         }
     }
