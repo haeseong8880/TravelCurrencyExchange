@@ -18,6 +18,8 @@
 		31F169A82820E768006DF09A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 31F169A72820E768006DF09A /* SnapKit */; };
 		31F169AB2820EDF7006DF09A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169AA2820EDF7006DF09A /* Extension.swift */; };
 		31F169AE2820F443006DF09A /* NumberPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169AD2820F443006DF09A /* NumberPadViewController.swift */; };
+		31F169B228251038006DF09A /* CurrencyExchangeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169B128251038006DF09A /* CurrencyExchangeAPI.swift */; };
+		31F169B528253DBA006DF09A /* CurrencyExchangeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169B428253DBA006DF09A /* CurrencyExchangeEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHomeViewController.swift; sourceTree = "<group>"; };
 		31F169AA2820EDF7006DF09A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		31F169AD2820F443006DF09A /* NumberPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadViewController.swift; sourceTree = "<group>"; };
+		31F169B128251038006DF09A /* CurrencyExchangeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeAPI.swift; sourceTree = "<group>"; };
+		31F169B428253DBA006DF09A /* CurrencyExchangeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +70,10 @@
 		311FF251282027AA0030ADC6 /* TravelCurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
-				31F169A92820EDED006DF09A /* UItility */,
 				311FF266282027C40030ADC6 /* View */,
+				31F169A92820EDED006DF09A /* UItility */,
+				31F169AF28251003006DF09A /* Repository */,
+				31F169B328253DA2006DF09A /* Entitiy */,
 				311FF252282027AA0030ADC6 /* AppDelegate.swift */,
 				311FF254282027AA0030ADC6 /* SceneDelegate.swift */,
 				311FF258282027AA0030ADC6 /* Main.storyboard */,
@@ -110,6 +116,30 @@
 				31F169AD2820F443006DF09A /* NumberPadViewController.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		31F169AF28251003006DF09A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				31F169B02825100D006DF09A /* Network */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		31F169B02825100D006DF09A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				31F169B128251038006DF09A /* CurrencyExchangeAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		31F169B328253DA2006DF09A /* Entitiy */ = {
+			isa = PBXGroup;
+			children = (
+				31F169B428253DBA006DF09A /* CurrencyExchangeEntity.swift */,
+			);
+			path = Entitiy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +222,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F169AE2820F443006DF09A /* NumberPadViewController.swift in Sources */,
+				31F169B228251038006DF09A /* CurrencyExchangeAPI.swift in Sources */,
+				31F169B528253DBA006DF09A /* CurrencyExchangeEntity.swift in Sources */,
 				31F169AB2820EDF7006DF09A /* Extension.swift in Sources */,
 				311FF257282027AA0030ADC6 /* MainViewController.swift in Sources */,
 				31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */,

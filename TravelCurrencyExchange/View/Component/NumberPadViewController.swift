@@ -136,6 +136,7 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.backgroundColor = .systemOrange
         $0.tag = 10
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
@@ -147,62 +148,8 @@ class NumberPadViewController: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
         $0.contentHorizontalAlignment = .center
+        $0.backgroundColor = .systemOrange
         $0.tag = 11
-        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-    }
-    
-    private let padDivision = UIButton().then {
-        $0.backgroundColor = .systemOrange
-        $0.layer.cornerRadius = 13
-        $0.setTitle("÷", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
-        $0.contentHorizontalAlignment = .center
-        $0.tag = 12
-        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-    }
-    
-    private let padMultiply = UIButton().then {
-        $0.backgroundColor = .systemOrange
-        $0.layer.cornerRadius = 13
-        $0.setTitle("×", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
-        $0.contentHorizontalAlignment = .center
-        $0.tag = 13
-        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-    }
-    
-    private let padMinus = UIButton().then {
-        $0.backgroundColor = .systemOrange
-        $0.layer.cornerRadius = 13
-        $0.setTitle("-", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
-        $0.contentHorizontalAlignment = .center
-        $0.tag = 14
-        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-    }
-    
-    private let padPlus = UIButton().then {
-        $0.backgroundColor = .systemOrange
-        $0.layer.cornerRadius = 13
-        $0.setTitle("+", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
-        $0.contentHorizontalAlignment = .center
-        $0.tag = 15
-        $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
-    }
-    
-    private let equalSignPlus = UIButton().then {
-        $0.backgroundColor = .systemOrange
-        $0.layer.cornerRadius = 13
-        $0.setTitle("=", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 60, weight: .bold)
-        $0.contentHorizontalAlignment = .center
-        $0.tag = 16
         $0.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
     }
     
@@ -218,7 +165,8 @@ class NumberPadViewController: UIView {
     //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .brown
+        self.backgroundColor = .darkGray
+        self.layer.cornerRadius = 20
         layout()
         
     }
@@ -229,7 +177,7 @@ class NumberPadViewController: UIView {
     
     //MARK: - Layout
     private func layout() {
-        [ numberPad7, numberPad8, numberPad9, numberPad6, numberPad5, numberPad4, numberPad3, numberPad2, numberPad1, numberPad0, numberPadPoint, numberPadClear, padDivision, padMultiply, padMinus, padPlus, equalSignPlus ].forEach {
+        [ numberPad7, numberPad8, numberPad9, numberPad6, numberPad5, numberPad4, numberPad3, numberPad2, numberPad1, numberPad0, numberPadPoint, numberPadClear ].forEach {
             self.addSubview($0)
         }
         
@@ -239,120 +187,85 @@ class NumberPadViewController: UIView {
         numberPad7.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.leading.equalToSuperview().inset(15)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPad8.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
             $0.leading.equalTo(numberPad7.snp.trailing).offset(10)
         }
         
         numberPad9.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.leading.equalTo(numberPad8.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
-        }
-        
-        padDivision.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)
-            $0.leading.equalTo(numberPad9.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPad4.snp.makeConstraints {
             $0.top.equalTo(numberPad7.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(15)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPad5.snp.makeConstraints {
             $0.top.equalTo(numberPad7.snp.bottom).offset(10)
             $0.leading.equalTo(numberPad4.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPad6.snp.makeConstraints {
             $0.top.equalTo(numberPad7.snp.bottom).offset(10)
             $0.leading.equalTo(numberPad5.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
-        }
-        
-        padMultiply.snp.makeConstraints {
-            $0.top.equalTo(numberPad7.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad6.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPad1.snp.makeConstraints {
             $0.top.equalTo(numberPad4.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(15)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPad2.snp.makeConstraints {
             $0.top.equalTo(numberPad4.snp.bottom).offset(10)
             $0.leading.equalTo(numberPad1.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPad3.snp.makeConstraints {
             $0.top.equalTo(numberPad4.snp.bottom).offset(10)
             $0.leading.equalTo(numberPad2.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
-        }
-        
-        padMinus.snp.makeConstraints {
-            $0.top.equalTo(numberPad4.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad3.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
-        }
-        
-        numberPad0.snp.makeConstraints {
-            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().inset(15)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPadPoint.snp.makeConstraints {
             $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPad0.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.leading.equalToSuperview().inset(15)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
+        }
+        
+        numberPad0.snp.makeConstraints {
+            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
+            $0.leading.equalTo(numberPadPoint.snp.trailing).offset(10)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
         
         numberPadClear.snp.makeConstraints {
             $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPadPoint.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
-        }
-        
-        padPlus.snp.makeConstraints {
-            $0.top.equalTo(numberPad1.snp.bottom).offset(10)
-            $0.leading.equalTo(numberPadClear.snp.trailing).offset(10)
-            $0.width.equalTo(screenWidth / 4 - 15)
-            $0.height.equalTo(screenHight / 8 - 30)
-        }
-        
-        equalSignPlus.snp.makeConstraints {
-            $0.top.equalTo(numberPad0.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().inset(15)
-            $0.trailing.equalToSuperview().inset(10)
-            $0.height.equalTo(screenHight / 8 - 30)
+            $0.leading.equalTo(numberPad0.snp.trailing).offset(10)
+            $0.width.equalTo(screenWidth / 3 - 15)
+            $0.height.equalTo(screenHight / 8 - 40)
         }
     }
 }
