@@ -13,6 +13,7 @@
 		311FF25A282027AA0030ADC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311FF258282027AA0030ADC6 /* Main.storyboard */; };
 		311FF25C282027AE0030ADC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311FF25B282027AE0030ADC6 /* Assets.xcassets */; };
 		311FF25F282027AE0030ADC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311FF25D282027AE0030ADC6 /* LaunchScreen.storyboard */; };
+		31C9B5B02826B69D00B0BF62 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C9B5AF2826B69D00B0BF62 /* AddListViewController.swift */; };
 		31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */; };
 		31F169A52820E759006DF09A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 31F169A42820E759006DF09A /* Then */; };
 		31F169A82820E768006DF09A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 31F169A72820E768006DF09A /* SnapKit */; };
@@ -31,6 +32,7 @@
 		311FF25B282027AE0030ADC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		311FF25E282027AE0030ADC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		311FF260282027AE0030ADC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31C9B5AF2826B69D00B0BF62 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHomeViewController.swift; sourceTree = "<group>"; };
 		31F169AA2820EDF7006DF09A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		31F169AD2820F443006DF09A /* NumberPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */,
+				31C9B5AF2826B69D00B0BF62 /* AddListViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31C9B5B02826B69D00B0BF62 /* AddListViewController.swift in Sources */,
 				31F169AE2820F443006DF09A /* NumberPadViewController.swift in Sources */,
 				31F169B228251038006DF09A /* CurrencyExchangeAPI.swift in Sources */,
 				31F169B528253DBA006DF09A /* CurrencyExchangeEntity.swift in Sources */,

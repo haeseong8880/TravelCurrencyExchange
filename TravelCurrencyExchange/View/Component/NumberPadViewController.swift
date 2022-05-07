@@ -165,7 +165,7 @@ class NumberPadViewController: UIView {
     //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .darkGray
+        self.backgroundColor = #colorLiteral(red: 0.2322605252, green: 0.2325651646, blue: 0.2418002784, alpha: 1)
         self.layer.cornerRadius = 20
         layout()
         

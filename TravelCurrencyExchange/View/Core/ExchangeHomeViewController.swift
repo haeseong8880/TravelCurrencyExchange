@@ -46,30 +46,36 @@ class ExchangeHomeViewController: UIViewController {
         $0.textAlignment = .right
         $0.font = .systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .white
-        $0.backgroundColor = .red
+        $0.layer.cornerRadius = 16
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = #colorLiteral(red: 0.5019607843, green: 0.5333333333, blue: 0.6980392157, alpha: 1)
     }
     
     private let inputMoneyLabel = UILabel().then {
         $0.text = ""
         $0.textAlignment = .right
-        $0.font = .systemFont(ofSize: 60, weight: .bold)
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .white
-        $0.backgroundColor = .brown
+        $0.layer.cornerRadius = 16
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = #colorLiteral(red: 0.3122541904, green: 0.418910563, blue: 0.6148851514, alpha: 1)
     }
     
     private let calculatorLabel = UILabel().then {
-        $0.text = "계산된 환율"
+        $0.text = "계산 금액"
         $0.textAlignment = .right
-        $0.font = .systemFont(ofSize: 60, weight: .bold)
+        $0.font = .systemFont(ofSize: 40, weight: .bold)
         $0.textColor = .white
-        $0.backgroundColor = .brown
+        $0.layer.cornerRadius = 16
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = #colorLiteral(red: 0.06474008411, green: 0.06667540222, blue: 0.1130684391, alpha: 1)
     }
     
     private let usedTypeTextField = UITextField().then {
         $0.font = .systemFont(ofSize: 22, weight: .bold)
         $0.borderStyle = .roundedRect
         $0.layer.borderWidth = 0.5
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 16
         $0.layer.borderColor = UIColor.darkGray.cgColor
         $0.backgroundColor = .darkGray
         $0.textColor = .white
@@ -109,7 +115,7 @@ class ExchangeHomeViewController: UIViewController {
     
     // MARK: - viewConfigure
     private func viewConfigure() {
-        view.backgroundColor = .black
+        view.backgroundColor = #colorLiteral(red: 0.2322605252, green: 0.2325651646, blue: 0.2418002784, alpha: 1)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
