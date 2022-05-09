@@ -30,7 +30,9 @@ class ExchangeHomeViewController: UIViewController {
     }
     
     private let noticeLabel = UILabel().then {
-        $0.text = "환율이 상이 할 수 있습니다."
+        $0.text = "한국수출입은행 환율 정보 기반 환율"
+        $0.numberOfLines = 2
+        $0.lineBreakMode = NSLineBreakMode.byWordWrapping
         $0.textColor = .white
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
     }
@@ -43,8 +45,8 @@ class ExchangeHomeViewController: UIViewController {
     
     private let exchangeLabel = UILabel().then {
         $0.text = "오늘의 환율"
-        $0.textAlignment = .right
-        $0.font = .systemFont(ofSize: 30, weight: .bold)
+        $0.textAlignment = .center
+        $0.font = .systemFont(ofSize: 24, weight: .bold)
         $0.textColor = .white
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
@@ -54,7 +56,7 @@ class ExchangeHomeViewController: UIViewController {
     private let inputMoneyLabel = UILabel().then {
         $0.text = ""
         $0.textAlignment = .right
-        $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.font = .systemFont(ofSize: 40, weight: .bold)
         $0.textColor = .white
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
@@ -79,6 +81,7 @@ class ExchangeHomeViewController: UIViewController {
         $0.layer.borderColor = UIColor.darkGray.cgColor
         $0.backgroundColor = .darkGray
         $0.textColor = .white
+        $0.textAlignment = .center
         $0.attributedPlaceholder = NSAttributedString(string: "국가 선택", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
@@ -142,10 +145,10 @@ class ExchangeHomeViewController: UIViewController {
         noticeLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.leading.equalToSuperview().inset(10)
+            $0.trailing.equalTo(registerButton.snp.leading)
             $0.height.equalTo(20)
-            $0.width.equalTo(180)
         }
-        
+
         standardDate.snp.makeConstraints {
             $0.top.equalTo(noticeLabel.snp.bottom)
             $0.leading.equalToSuperview().inset(10)
@@ -156,7 +159,7 @@ class ExchangeHomeViewController: UIViewController {
         usedTypeTextField.snp.makeConstraints {
             $0.top.equalTo(registerButton.snp.bottom).offset(20)
             $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.width.equalTo(150)
+            $0.width.equalTo(200)
             $0.height.equalTo(50)
         }
         
@@ -200,7 +203,7 @@ extension ExchangeHomeViewController : UIPickerViewDelegate, UIPickerViewDataSou
         exitBtn = UIBarButtonItem()
         exitBtn.title = "닫기"
         exitBtn.target = self
-        exitBtn.tintColor = .white
+        exitBtn.tintColor = .black
         exitBtn.action = #selector(pickerExit)
         
         toolbar = UIToolbar()
@@ -229,9 +232,19 @@ extension ExchangeHomeViewController : UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        usedTypeTextField.text = pickerList[row].curNm
-        exchangeLabel.text = pickerList[row].dealBasR
         pickerItem = pickerList[row]
+        
+        guard let unit = pickerItem?.curUnit else { return }
+        let deal = Double(pickerList[row].dealBasR.replacingOccurrences(of: ",", with: ""))
+        let dealToString = String(round(deal!)).replacingOccurrences(of: ".0", with: "")
+        
+        exchangeLabel.text = dealToString + " " + unit
+        attibuteChange(label: exchangeLabel, changeString: unit)
+        
+        usedTypeTextField.text = pickerList[row].curNm
+        pickerList[row].dealBasR = dealToString
+        inputMoneyLabel.text = ""
+        calculatorLabel.text = "계산 금액"
         self.view.endEditing(true)
     }
 }
@@ -241,16 +254,22 @@ extension ExchangeHomeViewController: sendDataDelegate {
     func sendData(clickNum: String, tag: Int) {
         if 0 <= tag && tag <= 9 {
             if pickerItem?.dealBasR != nil {
-                let deal = Double(pickerItem!.dealBasR)
+                guard let unit = pickerItem?.curUnit else { return }
+                let deal = Double(pickerItem!.dealBasR.replacingOccurrences(of: ",", with: ""))
                 if !inputMoneyLabel.text!.isEmpty {
-                    inputMoneyLabel.text = inputMoneyLabel.text! + clickNum
-                    let labelNum = Double(inputMoneyLabel.text!) ?? 0.0
-                    calculatorLabel.text = String(format: "%.1f", (labelNum * deal!))
+                    let replaceLabel = inputMoneyLabel.text!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\(unit)", with: "")
+                    let labelNum = Double(inputMoneyLabel.text!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\(unit)", with: "")) ?? 0.0
+                    
+                    inputMoneyLabel.text = Utility.shared.numberFormatter(number: Int(replaceLabel + clickNum)!) + unit
+                    calculatorLabel.text = Utility.shared.numberFormatter(number: Int(labelNum * deal!)) + "원"
                 } else {
-                    inputMoneyLabel.text = "\(clickNum)"
                     let num = Double(clickNum) ?? 0.0
-                    calculatorLabel.text = String(format: "%.1f", (num * deal!))
+                    inputMoneyLabel.text = Utility.shared.numberFormatter(number: Int(clickNum)!) + unit
+                    calculatorLabel.text = Utility.shared.numberFormatter(number: Int(num * deal!)) + "원"
                 }
+                
+                attibuteChange(label: inputMoneyLabel, changeString: unit)
+                attibuteChange(label: calculatorLabel, changeString: "원")
             } else {
                 let alert = UIAlertController(title: "알림", message: "환율을 먼저 선택해주세요.", preferredStyle: UIAlertController.Style.alert)
                 let okAction = UIAlertAction(title: "OK", style: .default) { (action) in }
@@ -259,7 +278,14 @@ extension ExchangeHomeViewController: sendDataDelegate {
             }
         }else if tag == 11 {
             inputMoneyLabel.text = ""
-            calculatorLabel.text = ""
+            calculatorLabel.text = "계산 금액"
         }
+    }
+    
+    private func attibuteChange(label: UILabel, changeString: String) {
+        let attributedinputMoney = NSMutableAttributedString(string: label.text!)
+        attributedinputMoney.addAttribute(.foregroundColor, value: UIColor.lightGray, range: (label.text! as NSString).range(of: changeString))
+        attributedinputMoney.addAttribute(.font, value: UIFont.systemFont(ofSize: 22), range: (label.text! as NSString).range(of: changeString))
+        label.attributedText = attributedinputMoney
     }
 }

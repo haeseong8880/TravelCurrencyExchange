@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AddListViewController: UIViewController {
+class UsedListViewController: UIViewController {
     
     // MARK: - LifeCycle
     override func viewDidLoad() {

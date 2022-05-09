@@ -9,7 +9,7 @@ import Foundation
 
 struct CurrencyExchangeEntity: Codable {
     let result: Int
-    let curUnit, ttb, tts, dealBasR: String
+    var curUnit, ttb, tts, dealBasR: String
     let bkpr, yyEfeeR, tenDDEfeeR, kftcBkpr: String
     let kftcDealBasR, curNm: String
 
