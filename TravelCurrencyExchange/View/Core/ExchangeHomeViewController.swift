@@ -46,7 +46,7 @@ class ExchangeHomeViewController: UIViewController {
     private let exchangeLabel = UILabel().then {
         $0.text = "오늘의 환율"
         $0.textAlignment = .center
-        $0.font = .systemFont(ofSize: 24, weight: .bold)
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .white
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
@@ -74,7 +74,7 @@ class ExchangeHomeViewController: UIViewController {
     }
     
     private let usedTypeTextField = UITextField().then {
-        $0.font = .systemFont(ofSize: 22, weight: .bold)
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.borderStyle = .roundedRect
         $0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 16
@@ -126,9 +126,19 @@ class ExchangeHomeViewController: UIViewController {
     }
     
     @objc func pushAddPage() {
-        let barItem = UIBarButtonItem()
-        let bottomSheetVC = BottomSheetViewController()
-        self.navigationController?.pushViewController(bottomSheetVC, animated: true)
+        if (inputMoneyLabel.text?.isEmpty)! {
+            let alert = UIAlertController(title: "알림", message: "계산 먼저 선택해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in }
+            alert.addAction(okAction)
+            present(alert, animated: false, completion: nil)
+        } else {
+            let bottomSheetVC = BottomSheetViewController()
+            bottomSheetVC.countryValue.text = usedTypeTextField.text
+            bottomSheetVC.todayCurrencyValue.text = exchangeLabel.text
+            bottomSheetVC.inputValue.text = inputMoneyLabel.text
+            bottomSheetVC.calculatorValue.text = calculatorLabel.text
+            self.navigationController?.pushViewController(bottomSheetVC, animated: true)
+        }
     }
     
     // MARK: - Layout
@@ -161,13 +171,13 @@ class ExchangeHomeViewController: UIViewController {
         usedTypeTextField.snp.makeConstraints {
             $0.top.equalTo(registerButton.snp.bottom).offset(20)
             $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.width.equalTo(200)
+            $0.width.equalTo(180)
             $0.height.equalTo(50)
         }
         
         exchangeLabel.snp.makeConstraints {
             $0.top.equalTo(registerButton.snp.bottom).offset(20)
-            $0.leading.equalTo(usedTypeTextField.snp.trailing).offset(20)
+            $0.leading.equalTo(usedTypeTextField.snp.trailing).offset(10)
             $0.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(50)
         }
@@ -236,12 +246,17 @@ extension ExchangeHomeViewController : UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerItem = pickerList[row]
         
-        guard let unit = pickerItem?.curUnit else { return }
+        guard var unit = pickerItem?.curUnit else { return }
         let deal = Double(pickerList[row].dealBasR.replacingOccurrences(of: ",", with: ""))
         let dealToString = String(round(deal!)).replacingOccurrences(of: ".0", with: "")
         
-        exchangeLabel.text = dealToString + " " + unit
-        attibuteChange(label: exchangeLabel, changeString: unit)
+        if unit == "IDR(100)" || unit == "JPY(100)" {
+            unit = unit.replacingOccurrences(of: "(100)", with: "")
+            exchangeLabel.text = "100\(unit) = " + dealToString + " " + "원"
+        } else {
+            exchangeLabel.text = "1\(unit) = " + dealToString + " " + "원"
+        }
+        attibuteChange(label: exchangeLabel, changeString: "원")
         
         usedTypeTextField.text = pickerList[row].curNm
         pickerList[row].dealBasR = dealToString
@@ -256,18 +271,21 @@ extension ExchangeHomeViewController: sendDataDelegate {
     func sendData(clickNum: String, tag: Int) {
         if 0 <= tag && tag <= 9 {
             if pickerItem?.dealBasR != nil {
-                guard let unit = pickerItem?.curUnit else { return }
-                let deal = Double(pickerItem!.dealBasR.replacingOccurrences(of: ",", with: ""))
+                guard var unit = pickerItem?.curUnit else { return }
+                if unit == "IDR(100)" || unit == "JPY(100)" {
+                    unit = unit.replacingOccurrences(of: "(100)", with: "")
+                }
+                let deal = round(Double(pickerItem!.dealBasR.replacingOccurrences(of: ",", with: ""))!)
                 if !inputMoneyLabel.text!.isEmpty {
                     let replaceLabel = inputMoneyLabel.text!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\(unit)", with: "")
                     let labelNum = Double(inputMoneyLabel.text!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\(unit)", with: "")) ?? 0.0
                     
                     inputMoneyLabel.text = Utility.shared.numberFormatter(number: Int(replaceLabel + clickNum)!) + unit
-                    calculatorLabel.text = Utility.shared.numberFormatter(number: Int(labelNum * deal!)) + "원"
+                    calculatorLabel.text = Utility.shared.numberFormatter(number: Int(labelNum * deal)) + "원"
                 } else {
                     let num = Double(clickNum) ?? 0.0
                     inputMoneyLabel.text = Utility.shared.numberFormatter(number: Int(clickNum)!) + unit
-                    calculatorLabel.text = Utility.shared.numberFormatter(number: Int(num * deal!)) + "원"
+                    calculatorLabel.text = Utility.shared.numberFormatter(number: Int(num * deal)) + "원"
                 }
                 
                 attibuteChange(label: inputMoneyLabel, changeString: unit)
