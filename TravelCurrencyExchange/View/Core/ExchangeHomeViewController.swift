@@ -26,7 +26,7 @@ class ExchangeHomeViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .systemBlue
         $0.layer.cornerRadius = 10
-        $0.addTarget(self, action: #selector(addData), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(pushAddPage), for: .touchUpInside)
     }
     
     private let noticeLabel = UILabel().then {
@@ -125,8 +125,10 @@ class ExchangeHomeViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @objc func addData() {
-        print("pickerItem =====>>>>  \(pickerItem)")
+    @objc func pushAddPage() {
+        let barItem = UIBarButtonItem()
+        let bottomSheetVC = BottomSheetViewController()
+        self.navigationController?.pushViewController(bottomSheetVC, animated: true)
     }
     
     // MARK: - Layout

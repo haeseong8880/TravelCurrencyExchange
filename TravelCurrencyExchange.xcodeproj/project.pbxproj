@@ -13,8 +13,10 @@
 		311FF25A282027AA0030ADC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311FF258282027AA0030ADC6 /* Main.storyboard */; };
 		311FF25C282027AE0030ADC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311FF25B282027AE0030ADC6 /* Assets.xcassets */; };
 		311FF25F282027AE0030ADC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311FF25D282027AE0030ADC6 /* LaunchScreen.storyboard */; };
+		315F71A4282A2D570005DD96 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F71A3282A2D570005DD96 /* BottomSheetViewController.swift */; };
 		31C9B5B02826B69D00B0BF62 /* UsedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C9B5AF2826B69D00B0BF62 /* UsedListViewController.swift */; };
 		31DD439F2829593E0030E1D9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD439E2829593E0030E1D9 /* Utility.swift */; };
+		31DD43A3282A231B0030E1D9 /* UsedListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD43A2282A231B0030E1D9 /* UsedListViewCell.swift */; };
 		31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */; };
 		31F169A52820E759006DF09A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 31F169A42820E759006DF09A /* Then */; };
 		31F169A82820E768006DF09A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 31F169A72820E768006DF09A /* SnapKit */; };
@@ -33,8 +35,10 @@
 		311FF25B282027AE0030ADC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		311FF25E282027AE0030ADC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		311FF260282027AE0030ADC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		315F71A3282A2D570005DD96 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		31C9B5AF2826B69D00B0BF62 /* UsedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedListViewController.swift; sourceTree = "<group>"; };
 		31DD439E2829593E0030E1D9 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		31DD43A2282A231B0030E1D9 /* UsedListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedListViewCell.swift; sourceTree = "<group>"; };
 		31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHomeViewController.swift; sourceTree = "<group>"; };
 		31F169AA2820EDF7006DF09A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		31F169AD2820F443006DF09A /* NumberPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +102,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		315F71A2282A2D4B0005DD96 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				315F71A3282A2D570005DD96 /* BottomSheetViewController.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		31DD43A0282A22EF0030E1D9 /* NumberPad */ = {
+			isa = PBXGroup;
+			children = (
+				31F169AD2820F443006DF09A /* NumberPadViewController.swift */,
+			);
+			path = NumberPad;
+			sourceTree = "<group>";
+		};
+		31DD43A1282A22F70030E1D9 /* UsedList */ = {
+			isa = PBXGroup;
+			children = (
+				31DD43A2282A231B0030E1D9 /* UsedListViewCell.swift */,
+			);
+			path = UsedList;
+			sourceTree = "<group>";
+		};
 		31F169A02820E586006DF09A /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +147,9 @@
 		31F169AC2820F428006DF09A /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				31F169AD2820F443006DF09A /* NumberPadViewController.swift */,
+				315F71A2282A2D4B0005DD96 /* BottomSheet */,
+				31DD43A0282A22EF0030E1D9 /* NumberPad */,
+				31DD43A1282A22F70030E1D9 /* UsedList */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -231,8 +261,10 @@
 				31C9B5B02826B69D00B0BF62 /* UsedListViewController.swift in Sources */,
 				31F169AE2820F443006DF09A /* NumberPadViewController.swift in Sources */,
 				31F169B228251038006DF09A /* CurrencyExchangeAPI.swift in Sources */,
+				31DD43A3282A231B0030E1D9 /* UsedListViewCell.swift in Sources */,
 				31F169B528253DBA006DF09A /* CurrencyExchangeEntity.swift in Sources */,
 				31F169AB2820EDF7006DF09A /* Extension.swift in Sources */,
+				315F71A4282A2D570005DD96 /* BottomSheetViewController.swift in Sources */,
 				311FF257282027AA0030ADC6 /* MainViewController.swift in Sources */,
 				31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */,
 				311FF253282027AA0030ADC6 /* AppDelegate.swift in Sources */,
