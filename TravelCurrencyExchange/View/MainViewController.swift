@@ -13,8 +13,8 @@ import Then
 class MainViewController: UITabBarController {
 
     private let animationView: AnimationView = {
-        let aniView = AnimationView(name: "WalkLottie")
-        aniView.frame = CGRect(x: 0, y: 0, width: 350, height: 500)
+        let aniView = AnimationView(name: "69849-travel")
+        aniView.frame = CGRect(x: 0, y: 0, width: Utility.shared.getDeviceWidth(), height: 500)
         aniView.contentMode = .scaleAspectFill
         return aniView
     }()
