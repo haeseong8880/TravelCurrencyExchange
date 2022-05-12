@@ -12,7 +12,6 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomViewConfigure()
-        
     }
     
     private func bottomViewConfigure() {

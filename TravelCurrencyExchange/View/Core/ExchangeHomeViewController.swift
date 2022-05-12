@@ -11,12 +11,12 @@ import SnapKit
 
 class ExchangeHomeViewController: UIViewController {
     
-    var pickerList: [CurrencyExchangeEntity] = []
-    var pickerItem: CurrencyExchangeEntity?
+    private var pickerList: [CurrencyExchangeEntity] = []
+    private var pickerItem: CurrencyExchangeEntity?
     
-    var toolbar: UIToolbar!
-    var exitBtn: UIBarButtonItem!
-    var picker: UIPickerView!
+    private var toolbar: UIToolbar!
+    private var exitBtn: UIBarButtonItem!
+    private var picker: UIPickerView!
     
     //MARK: - Properties
     private let numberPadViewController = NumberPadViewController()
@@ -93,6 +93,7 @@ class ExchangeHomeViewController: UIViewController {
         pickerConfigure()
         getExchange()
         getToday()
+        
         let numberPad = numberPadViewController
         numberPad.delegate = self
     }
@@ -104,6 +105,7 @@ class ExchangeHomeViewController: UIViewController {
             }
         }
     }
+    
     private func getToday() {
         let now = Date()
         

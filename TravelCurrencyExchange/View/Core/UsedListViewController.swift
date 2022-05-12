@@ -14,6 +14,7 @@ class UsedListViewController: UITableViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = #colorLiteral(red: 0.2322605252, green: 0.2325651646, blue: 0.2418002784, alpha: 1)
         tableView.frame = .zero
         tableView.register(UsedListViewCell.self, forCellReuseIdentifier: "UsedListViewCell")
