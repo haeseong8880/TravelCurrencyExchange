@@ -181,8 +181,8 @@ class NumberPadViewController: UIView {
             self.addSubview($0)
         }
         
-        let screenWidth = UIScreen.main.bounds.size.width
-        let screenHight = UIScreen.main.bounds.size.height
+        let screenWidth = Utility.shared.getDeviceWidth()
+        let screenHight = Utility.shared.getDeviceHeight()
         
         numberPad7.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(10)

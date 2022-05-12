@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("PATH => \(Realm.Configuration.defaultConfiguration.fileURL!)")
         bottomViewConfigure()
     }
     

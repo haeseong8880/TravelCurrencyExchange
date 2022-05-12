@@ -12,7 +12,7 @@ import Then
 class BottomSheetViewController: UIViewController {
     
     var pickerList = ["사용 내역을 선택해 주세요 😁", "교통 🚎", "숙소 🏨" ,"식비 🍚", "쇼핑 🛍", "기타"]
-//    var pickerItemPrivate?
+    //    var pickerItemPrivate?
     
     var toolbar: UIToolbar!
     var exitBtn: UIBarButtonItem!
@@ -68,7 +68,7 @@ class BottomSheetViewController: UIViewController {
     }
     
     private let typeTextField = UITextField().then {
-        $0.font = .systemFont(ofSize: 30, weight: .bold)
+        $0.font = .systemFont(ofSize: 22, weight: .bold)
         $0.borderStyle = .roundedRect
         $0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 16
@@ -82,9 +82,40 @@ class BottomSheetViewController: UIViewController {
     private let inputUsedTextField = UITextField().then {
         $0.placeholder = "내역을 입력해주세요."
         $0.textAlignment = .center
-        $0.font = .systemFont(ofSize: 30)
+        $0.font = .systemFont(ofSize: 22)
+        $0.layer.cornerRadius = 5
         $0.textColor = .white
         $0.backgroundColor = #colorLiteral(red: 0.3122541904, green: 0.418910563, blue: 0.6148851514, alpha: 1)
+    }
+    
+    private let addDataButton = UIButton().then {
+        $0.setTitle("등록", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 26, weight: .bold)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .systemBlue
+        $0.layer.cornerRadius = 10
+        $0.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+    }
+    
+    //MARK: - Action
+    @objc private func saveData() {
+        let historyModel = UsedHistoryModel()
+        historyModel.country = countryValue.text!
+        historyModel.todayCurrency = todayCurrencyValue.text!
+        historyModel.input = inputValue.text!
+        historyModel.calculator = calculatorValue.text!
+        historyModel.type = typeTextField.text!
+        historyModel.inputUsed = inputUsedTextField.text!
+        UsedHistoryManager.shared.saveUsedHisotry(history: historyModel) { result in
+            if result {
+                let alert = UIAlertController(title: "알림", message: "등록이 완료 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let okAction = UIAlertAction(title: "확인", style: .default) { action in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: false, completion: nil)
+            }
+        }
     }
     
     //MARK: - LifeCycle
@@ -108,7 +139,9 @@ class BottomSheetViewController: UIViewController {
     
     //MARK: - Layout
     private func layout() {
-        [ countryLabel, countryValue, todayCurrencyLabel, todayCurrencyValue, inputLabel, inputValue, calculatorLabel, calculatorValue, typeTextField, inputUsedTextField ].forEach{ view.addSubview($0) }
+        [ countryLabel, countryValue, todayCurrencyLabel, todayCurrencyValue, inputLabel, inputValue, calculatorLabel, calculatorValue, typeTextField, inputUsedTextField, addDataButton ].forEach{ view.addSubview($0) }
+        
+        let screenWidth = Utility.shared.getDeviceWidth()
         
         countryLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -168,14 +201,22 @@ class BottomSheetViewController: UIViewController {
         
         typeTextField.snp.makeConstraints {
             $0.top.equalTo(calculatorValue.snp.bottom)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(60)
+            $0.leading.equalToSuperview().inset(10)
+            $0.width.equalTo(screenWidth / 2 - 15)
+            $0.height.equalTo(50)
         }
         
         inputUsedTextField.snp.makeConstraints {
-            $0.top.equalTo(typeTextField.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(60)
+            $0.top.equalTo(calculatorValue.snp.bottom)
+            $0.trailing.equalToSuperview().inset(10)
+            $0.width.equalTo(screenWidth / 2 - 15)
+            $0.height.equalTo(50)
+        }
+        
+        addDataButton.snp.makeConstraints {
+            $0.top.equalTo(inputUsedTextField.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(40)
+            $0.height.equalTo(50)
         }
     }
 }
@@ -220,7 +261,11 @@ extension BottomSheetViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        typeTextField.text = pickerList[row]
+        if row == 0 {
+            present(Utility.shared.alert(title: "알림", message: "다른 항목을 선택해주세요."), animated: true, completion: nil)
+        } else {
+            typeTextField.text = pickerList[row]
+        }
         self.view.endEditing(true)
     }
 }

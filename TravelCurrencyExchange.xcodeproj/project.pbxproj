@@ -15,6 +15,9 @@
 		311FF25F282027AE0030ADC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311FF25D282027AE0030ADC6 /* LaunchScreen.storyboard */; };
 		315F71A4282A2D570005DD96 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F71A3282A2D570005DD96 /* BottomSheetViewController.swift */; };
 		31C9B5B02826B69D00B0BF62 /* UsedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C9B5AF2826B69D00B0BF62 /* UsedListViewController.swift */; };
+		31D8B999282D1A3400399BEF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 31D8B998282D1A3400399BEF /* RealmSwift */; };
+		31D8B99C282D1FA200399BEF /* UsedHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8B99B282D1FA200399BEF /* UsedHistoryModel.swift */; };
+		31D8B99F282D28C200399BEF /* UsedHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8B99E282D28C200399BEF /* UsedHistoryManager.swift */; };
 		31DD439F2829593E0030E1D9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD439E2829593E0030E1D9 /* Utility.swift */; };
 		31DD43A3282A231B0030E1D9 /* UsedListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD43A2282A231B0030E1D9 /* UsedListViewCell.swift */; };
 		31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */; };
@@ -37,6 +40,8 @@
 		311FF260282027AE0030ADC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		315F71A3282A2D570005DD96 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		31C9B5AF2826B69D00B0BF62 /* UsedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedListViewController.swift; sourceTree = "<group>"; };
+		31D8B99B282D1FA200399BEF /* UsedHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedHistoryModel.swift; sourceTree = "<group>"; };
+		31D8B99E282D28C200399BEF /* UsedHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedHistoryManager.swift; sourceTree = "<group>"; };
 		31DD439E2829593E0030E1D9 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		31DD43A2282A231B0030E1D9 /* UsedListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedListViewCell.swift; sourceTree = "<group>"; };
 		31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHomeViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31D8B999282D1A3400399BEF /* RealmSwift in Frameworks */,
 				31F169A52820E759006DF09A /* Then in Frameworks */,
 				31F169A82820E768006DF09A /* SnapKit in Frameworks */,
 			);
@@ -82,6 +88,7 @@
 				31F169A92820EDED006DF09A /* Utility */,
 				31F169AF28251003006DF09A /* Repository */,
 				31F169B328253DA2006DF09A /* Entitiy */,
+				31D8B99A282D1F3400399BEF /* Realm */,
 				311FF252282027AA0030ADC6 /* AppDelegate.swift */,
 				311FF254282027AA0030ADC6 /* SceneDelegate.swift */,
 				311FF258282027AA0030ADC6 /* Main.storyboard */,
@@ -108,6 +115,23 @@
 				315F71A3282A2D570005DD96 /* BottomSheetViewController.swift */,
 			);
 			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		31D8B99A282D1F3400399BEF /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				31D8B99D282D289900399BEF /* UsedHistory */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		31D8B99D282D289900399BEF /* UsedHistory */ = {
+			isa = PBXGroup;
+			children = (
+				31D8B99E282D28C200399BEF /* UsedHistoryManager.swift */,
+				31D8B99B282D1FA200399BEF /* UsedHistoryModel.swift */,
+			);
+			path = UsedHistory;
 			sourceTree = "<group>";
 		};
 		31DD43A0282A22EF0030E1D9 /* NumberPad */ = {
@@ -197,6 +221,7 @@
 			packageProductDependencies = (
 				31F169A42820E759006DF09A /* Then */,
 				31F169A72820E768006DF09A /* SnapKit */,
+				31D8B998282D1A3400399BEF /* RealmSwift */,
 			);
 			productName = TravelCurrencyExchange;
 			productReference = 311FF24F282027AA0030ADC6 /* TravelCurrencyExchange.app */;
@@ -229,6 +254,7 @@
 			packageReferences = (
 				31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */,
 				31F169A62820E768006DF09A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				31D8B997282D1A3400399BEF /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 311FF250282027AA0030ADC6 /* Products */;
 			projectDirPath = "";
@@ -262,11 +288,13 @@
 				31F169AE2820F443006DF09A /* NumberPadViewController.swift in Sources */,
 				31F169B228251038006DF09A /* CurrencyExchangeAPI.swift in Sources */,
 				31DD43A3282A231B0030E1D9 /* UsedListViewCell.swift in Sources */,
+				31D8B99C282D1FA200399BEF /* UsedHistoryModel.swift in Sources */,
 				31F169B528253DBA006DF09A /* CurrencyExchangeEntity.swift in Sources */,
 				31F169AB2820EDF7006DF09A /* Extension.swift in Sources */,
 				315F71A4282A2D570005DD96 /* BottomSheetViewController.swift in Sources */,
 				311FF257282027AA0030ADC6 /* MainViewController.swift in Sources */,
 				31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */,
+				31D8B99F282D28C200399BEF /* UsedHistoryManager.swift in Sources */,
 				311FF253282027AA0030ADC6 /* AppDelegate.swift in Sources */,
 				311FF255282027AA0030ADC6 /* SceneDelegate.swift in Sources */,
 			);
@@ -486,6 +514,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		31D8B997282D1A3400399BEF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -505,6 +541,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		31D8B998282D1A3400399BEF /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31D8B997282D1A3400399BEF /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		31F169A42820E759006DF09A /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */;
