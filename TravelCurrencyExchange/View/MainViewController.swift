@@ -7,13 +7,31 @@
 
 import UIKit
 import RealmSwift
+import Lottie
+import Then
 
 class MainViewController: UITabBarController {
 
+    private let animationView: AnimationView = {
+        let aniView = AnimationView(name: "WalkLottie")
+        aniView.frame = CGRect(x: 0, y: 0, width: 350, height: 500)
+        aniView.contentMode = .scaleAspectFill
+        return aniView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.isTranslucent = false
+        view.addSubview(animationView)
+        view.backgroundColor = #colorLiteral(red: 0.231372549, green: 0.231372549, blue: 0.2431372549, alpha: 1)
+        UITabBar.appearance().barTintColor = #colorLiteral(red: 0.231372549, green: 0.231372549, blue: 0.2431372549, alpha: 1)
+        animationView.center = view.center
+        animationView.play { finish in
+            self.animationView.removeFromSuperview()
+            self.bottomViewConfigure()
+        }
+        
         print("PATH => \(Realm.Configuration.defaultConfiguration.fileURL!)")
-        bottomViewConfigure()
     }
     
     private func bottomViewConfigure() {

@@ -18,6 +18,8 @@
 		31D8B999282D1A3400399BEF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 31D8B998282D1A3400399BEF /* RealmSwift */; };
 		31D8B99C282D1FA200399BEF /* UsedHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8B99B282D1FA200399BEF /* UsedHistoryModel.swift */; };
 		31D8B99F282D28C200399BEF /* UsedHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8B99E282D28C200399BEF /* UsedHistoryManager.swift */; };
+		31D8B9A2282D49C600399BEF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 31D8B9A1282D49C600399BEF /* Lottie */; };
+		31D8B9A6282D4CDE00399BEF /* WalkLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 31D8B9A5282D4CDE00399BEF /* WalkLottie.json */; };
 		31DD439F2829593E0030E1D9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD439E2829593E0030E1D9 /* Utility.swift */; };
 		31DD43A3282A231B0030E1D9 /* UsedListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD43A2282A231B0030E1D9 /* UsedListViewCell.swift */; };
 		31F169A22820E59D006DF09A /* ExchangeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */; };
@@ -42,6 +44,7 @@
 		31C9B5AF2826B69D00B0BF62 /* UsedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedListViewController.swift; sourceTree = "<group>"; };
 		31D8B99B282D1FA200399BEF /* UsedHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedHistoryModel.swift; sourceTree = "<group>"; };
 		31D8B99E282D28C200399BEF /* UsedHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedHistoryManager.swift; sourceTree = "<group>"; };
+		31D8B9A5282D4CDE00399BEF /* WalkLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WalkLottie.json; sourceTree = "<group>"; };
 		31DD439E2829593E0030E1D9 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		31DD43A2282A231B0030E1D9 /* UsedListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedListViewCell.swift; sourceTree = "<group>"; };
 		31F169A12820E59D006DF09A /* ExchangeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHomeViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 				31D8B999282D1A3400399BEF /* RealmSwift in Frameworks */,
 				31F169A52820E759006DF09A /* Then in Frameworks */,
 				31F169A82820E768006DF09A /* SnapKit in Frameworks */,
+				31D8B9A2282D49C600399BEF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +99,7 @@
 				311FF25B282027AE0030ADC6 /* Assets.xcassets */,
 				311FF25D282027AE0030ADC6 /* LaunchScreen.storyboard */,
 				311FF260282027AE0030ADC6 /* Info.plist */,
+				31D8B9A5282D4CDE00399BEF /* WalkLottie.json */,
 			);
 			path = TravelCurrencyExchange;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				31F169A42820E759006DF09A /* Then */,
 				31F169A72820E768006DF09A /* SnapKit */,
 				31D8B998282D1A3400399BEF /* RealmSwift */,
+				31D8B9A1282D49C600399BEF /* Lottie */,
 			);
 			productName = TravelCurrencyExchange;
 			productReference = 311FF24F282027AA0030ADC6 /* TravelCurrencyExchange.app */;
@@ -255,6 +261,7 @@
 				31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */,
 				31F169A62820E768006DF09A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				31D8B997282D1A3400399BEF /* XCRemoteSwiftPackageReference "realm-swift" */,
+				31D8B9A0282D49C600399BEF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 311FF250282027AA0030ADC6 /* Products */;
 			projectDirPath = "";
@@ -271,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				311FF25F282027AE0030ADC6 /* LaunchScreen.storyboard in Resources */,
+				31D8B9A6282D4CDE00399BEF /* WalkLottie.json in Resources */,
 				311FF25C282027AE0030ADC6 /* Assets.xcassets in Resources */,
 				311FF25A282027AA0030ADC6 /* Main.storyboard in Resources */,
 			);
@@ -522,6 +530,14 @@
 				kind = branch;
 			};
 		};
+		31D8B9A0282D49C600399BEF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		31F169A32820E759006DF09A /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -545,6 +561,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 31D8B997282D1A3400399BEF /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		31D8B9A1282D49C600399BEF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31D8B9A0282D49C600399BEF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		31F169A42820E759006DF09A /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
