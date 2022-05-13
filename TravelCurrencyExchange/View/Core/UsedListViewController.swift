@@ -42,7 +42,12 @@ extension UsedListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsedListViewCell", for: indexPath) as! UsedListViewCell
-        cell.nameLabel.text = usedHistoryList[indexPath.row].country
+        cell.countryCellLabel.text = usedHistoryList[indexPath.row].country
+        cell.currencyLabel.text = usedHistoryList[indexPath.row].todayCurrency
+        cell.inputLabel.text = usedHistoryList[indexPath.row].input
+        cell.calculatorLabel.text = usedHistoryList[indexPath.row].calculator
+        cell.typeLabel.text = usedHistoryList[indexPath.row].type
+        cell.inputUsedLabel.text = usedHistoryList[indexPath.row].inputUsed
         return cell
     }
 }

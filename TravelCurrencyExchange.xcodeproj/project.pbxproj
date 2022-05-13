@@ -88,6 +88,7 @@
 		311FF251282027AA0030ADC6 /* TravelCurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
+				31C1B49C282E05E30081D937 /* Assets */,
 				311FF266282027C40030ADC6 /* View */,
 				31F169A92820EDED006DF09A /* Utility */,
 				31F169AF28251003006DF09A /* Repository */,
@@ -96,10 +97,8 @@
 				311FF252282027AA0030ADC6 /* AppDelegate.swift */,
 				311FF254282027AA0030ADC6 /* SceneDelegate.swift */,
 				311FF258282027AA0030ADC6 /* Main.storyboard */,
-				311FF25B282027AE0030ADC6 /* Assets.xcassets */,
 				311FF25D282027AE0030ADC6 /* LaunchScreen.storyboard */,
 				311FF260282027AE0030ADC6 /* Info.plist */,
-				3183F6CA282D5592007BAB9E /* 69849-travel.json */,
 			);
 			path = TravelCurrencyExchange;
 			sourceTree = "<group>";
@@ -120,6 +119,15 @@
 				315F71A3282A2D570005DD96 /* BottomSheetViewController.swift */,
 			);
 			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		31C1B49C282E05E30081D937 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				311FF25B282027AE0030ADC6 /* Assets.xcassets */,
+				3183F6CA282D5592007BAB9E /* 69849-travel.json */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		31D8B99A282D1F3400399BEF /* Realm */ = {
