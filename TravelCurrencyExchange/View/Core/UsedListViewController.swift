@@ -50,4 +50,8 @@ extension UsedListViewController {
         cell.inputUsedLabel.text = usedHistoryList[indexPath.row].inputUsed
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
 }

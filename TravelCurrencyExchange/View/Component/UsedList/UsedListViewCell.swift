@@ -65,7 +65,7 @@ class UsedListViewCell: UITableViewCell {
         [ countryCellLabel, currencyLabel, inputLabel, calculatorLabel, typeLabel, inputUsedLabel ].forEach { addSubview($0) }
         
         countryCellLabel.snp.makeConstraints {
-            $0.top.bottom.trailing.equalToSuperview()
+            $0.top.trailing.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
         }
         
