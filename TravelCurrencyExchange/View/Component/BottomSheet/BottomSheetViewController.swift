@@ -113,6 +113,8 @@ class BottomSheetViewController: UIViewController {
                     self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(okAction)
+                let usedListView = UsedListViewController()
+                usedListView.tableView.reloadData()
                 self.present(alert, animated: false, completion: nil)
             }
         }

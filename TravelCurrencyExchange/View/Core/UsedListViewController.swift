@@ -14,24 +14,46 @@ class UsedListViewController: UITableViewController {
     //MARK: - Properties
     private var usedHistoryList: [UsedHistoryModel] = []
     
+    private let noDataNoticeLabel = UILabel().then {
+        $0.text = "데이터가 존재하지 않습니다."
+        $0.textAlignment = .center
+        $0.textColor = .white
+        $0.font = .systemFont(ofSize: 30, weight: .bold)
+    }
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.2322605252, green: 0.2325651646, blue: 0.2418002784, alpha: 1)
         tableView.frame = .zero
         tableView.register(UsedListViewCell.self, forCellReuseIdentifier: "UsedListViewCell")
-        
+        Layout()
         getAllUsedHistory()
     }
     
     private func getAllUsedHistory() {
         let items: [UsedHistoryModel] = UsedHistoryManager.shared.getUsedHisotrys()
         if items.count > 0 {
+            noDataNoticeLabel.isHidden = true
             items.forEach {
                 usedHistoryList.append($0)
             }
+        } else {
+            noDataNoticeLabel.isHidden = false
         }
     }
+    
+    //MARK: - Layout
+    private func Layout() {
+        [noDataNoticeLabel].forEach {
+            view.addSubview($0)
+        }
+        
+        noDataNoticeLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
+    }
+    
     
     func popup(titleText: String, placeholderText: String, index: Int) {
         let alert = UIAlertController(title: titleText,message: nil, preferredStyle: .alert)
