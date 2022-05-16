@@ -30,12 +30,25 @@ class UsedHistoryManager {
             }
             onSuccess(true)
         } catch {
-            print("saveMember => \(error.localizedDescription)")
+            print("saveUsedHisotry => \(error.localizedDescription)")
         }
     }
     
     private func autoIncrementID() -> Int {
         let realm = try! Realm()
         return (realm.objects(UsedHistoryModel.self).max(ofProperty: "id") as Int? ?? 0) + 1
+    }
+    
+    func deleteUsedHistory(history: UsedHistoryModel, onSuccess: @escaping ((Bool) -> Void)) {
+        do {
+            let realm = try! Realm()
+            guard let data = realm.objects(UsedHistoryModel.self).filter("id == %@", history.id).first else { return }
+            try realm.write {
+                realm.delete(data)
+            }
+            onSuccess(true)
+        } catch {
+            print("deleteUsedHistory => \(error.localizedDescription)")
+        }
     }
 }
