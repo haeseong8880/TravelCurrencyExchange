@@ -110,13 +110,14 @@ class BottomSheetViewController: UIViewController {
             if result {
                 let alert = UIAlertController(title: "알림", message: "등록이 완료 되었습니다.", preferredStyle: UIAlertController.Style.alert)
                 let okAction = UIAlertAction(title: "확인", style: .default) { action in
+//                    UsedListViewController().tableView.beginUpdates()
+//                    UsedListViewController().tableView.endUpdates()
                     self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(okAction)
-                let usedListView = UsedListViewController()
-                usedListView.tableView.reloadData()
                 self.present(alert, animated: false, completion: nil)
             }
+            UsedListViewController().viewDidAppear(true)
         }
     }
     

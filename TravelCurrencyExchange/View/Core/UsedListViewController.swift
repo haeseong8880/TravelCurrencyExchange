@@ -28,18 +28,26 @@ class UsedListViewController: UITableViewController {
         tableView.frame = .zero
         tableView.register(UsedListViewCell.self, forCellReuseIdentifier: "UsedListViewCell")
         Layout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getAllUsedHistory()
     }
     
     private func getAllUsedHistory() {
+        usedHistoryList.removeAll()
         let items: [UsedHistoryModel] = UsedHistoryManager.shared.getUsedHisotrys()
-        if items.count > 0 {
-            noDataNoticeLabel.isHidden = true
-            items.forEach {
-                usedHistoryList.append($0)
+        DispatchQueue.main.async {
+            if items.count > 0 {
+                self.noDataNoticeLabel.isHidden = true
+                items.forEach {
+                    self.usedHistoryList.append($0)
+                }
+            } else {
+                self.noDataNoticeLabel.isHidden = false
             }
-        } else {
-            noDataNoticeLabel.isHidden = false
+            self.tableView.reloadData()
         }
     }
     
@@ -54,6 +62,11 @@ class UsedListViewController: UITableViewController {
         }
     }
     
+    func tableViewReloadData() {
+        DispatchQueue.main.async {
+            self.getAllUsedHistory()
+        }
+    }
     
     func popup(titleText: String, placeholderText: String, index: Int) {
         let alert = UIAlertController(title: titleText,message: nil, preferredStyle: .alert)
@@ -86,8 +99,12 @@ class UsedListViewController: UITableViewController {
             UsedHistoryManager.shared.deleteUsedHistory(history:
                                                             self.usedHistoryList[index.row]) { result in
                 if result {
-                    print("Delete Success!!")
                     self.usedHistoryList.remove(at: index.row)
+                    if self.usedHistoryList.count <= 0 {
+                        self.noDataNoticeLabel.isHidden = false
+                    }else {
+                        self.noDataNoticeLabel.isHidden = true
+                    }
                     self.tableView.reloadData()
                 }
             }

@@ -82,7 +82,7 @@ class UsedListViewCell: UITableViewCell {
         currencyLabel.snp.makeConstraints {
             $0.top.equalTo(countryCellLabel.snp.top)
             $0.leading.equalTo(countryCellLabel.snp.trailing)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(10)
         }
         
         inputLabelNoticeLabel.snp.makeConstraints {
@@ -95,13 +95,13 @@ class UsedListViewCell: UITableViewCell {
         inputLabel.snp.makeConstraints {
             $0.top.equalTo(inputLabelNoticeLabel.snp.top)
             $0.leading.equalTo(inputLabelNoticeLabel.snp.trailing)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(10)
         }
         
         calculatorLabel.snp.makeConstraints {
             $0.top.equalTo(inputLabel.snp.bottom).offset(10)
             $0.leading.equalTo(countryCellLabel.snp.leading)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(10)
         }
         
         typeLabel.snp.makeConstraints {
@@ -113,7 +113,7 @@ class UsedListViewCell: UITableViewCell {
         inputUsedLabel.snp.makeConstraints {
             $0.top.equalTo(typeLabel.snp.top).offset(10)
             $0.leading.equalTo(typeLabel.snp.trailing)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(10)
         }
     }
 }
