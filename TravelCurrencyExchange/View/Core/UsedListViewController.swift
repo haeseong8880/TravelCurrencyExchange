@@ -9,6 +9,11 @@ import UIKit
 import Then
 import SnapKit
 
+enum SwipeActionEnum {
+    case money
+    case etc
+}
+
 class UsedListViewController: UITableViewController {
     
     //MARK: - Properties
@@ -68,26 +73,27 @@ class UsedListViewController: UITableViewController {
         }
     }
     
-    func popup(titleText: String, placeholderText: String, index: Int) {
+    func popup(titleText: String, placeholderText: String, index: Int, enumType: SwipeActionEnum) {
         let alert = UIAlertController(title: titleText,message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         
-        //            alert.addTextField { (textField) in
-        //                textField.placeholder = placeholderText
-        //                if type == .money { textField.keyboardType = .numberPad }
-        //            }
+        alert.addTextField { (textField) in
+            textField.placeholder = placeholderText
+            if enumType == .money { textField.keyboardType = .numberPad }
+        }
         
         alert.addAction(UIAlertAction(title: "수정", style: .default, handler: {[weak self] action in
-            //                guard let self = self else { return }
-            //                if let result = alert.textFields?.first?.text {
-            //                    MemberManager.shared.updateMember(with: self.memberList[index], newData: result, type: type) { resultBool in
-            //                        if resultBool {
-            //                            if type == .name { self.memberList[index].name = result }
-            //                            else if type == .money { self.memberList[index].money = result + "원" }
-            //                            self.reloadData()
-            //                        }
-            //                    }
-            //                }
+            guard let self = self else { return }
+            if let result = alert.textFields?.first?.text {
+                print(result)
+                UsedHistoryManager.shared.updateHistory(history: self.usedHistoryList[index], updateData: result, type: enumType) {
+                    if $0 {
+                        if enumType == .money { self.usedHistoryList[index].input = result }
+                        else if enumType == .etc { self.usedHistoryList[index].inputUsed = result}
+                        self.tableView.reloadData()
+                    }
+                }
+            }
         }))
         view.window?.rootViewController?.present(alert, animated: true)
     }
@@ -143,14 +149,16 @@ extension UsedListViewController {
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let nameEdting = UIContextualAction(style: .normal, title: "이름 수정") { (action, view, completionHandler) in
-            self.popup(titleText: "이름 수정", placeholderText: "수정 할 이름을 입력해주세요.", index: indexPath.row)
-            completionHandler(true)
-        }
         let moneyEdting = UIContextualAction(style: .normal, title: "금액 수정") { (action, view, completionHandler) in
-            self.popup(titleText: "금액 수정", placeholderText: "수정 할 금액을 입력해주세요.", index: indexPath.row)
+            self.popup(titleText: "금액 수정", placeholderText: "수정 할 금액을 입력해주세요.", index: indexPath.row, enumType: .money)
             completionHandler(true)
         }
+        
+        let etcEdting = UIContextualAction(style: .normal, title: "내용 수정") { (action, view, completionHandler) in
+            self.popup(titleText: "내용 수정", placeholderText: "수정 할 내용을 입력해주세요.", index: indexPath.row, enumType: .etc)
+            completionHandler(true)
+        }
+        
         let deleteAction = UIContextualAction(style: .normal, title: "삭제") { (action, view, completionHandler) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -159,11 +167,11 @@ extension UsedListViewController {
             }
         }
         
-        nameEdting.backgroundColor = .systemBlue
+        etcEdting.backgroundColor = .systemBlue
         moneyEdting.backgroundColor = .systemGray
         deleteAction.backgroundColor = .systemRed
         
-        let configure = UISwipeActionsConfiguration(actions:[ nameEdting, moneyEdting, deleteAction ])
+        let configure = UISwipeActionsConfiguration(actions:[ moneyEdting, etcEdting , deleteAction ])
         configure.performsFirstActionWithFullSwipe = false
         return configure
     }
