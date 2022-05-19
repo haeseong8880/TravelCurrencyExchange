@@ -85,12 +85,13 @@ class UsedListViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "수정", style: .default, handler: {[weak self] action in
             guard let self = self else { return }
             if let result = alert.textFields?.first?.text {
-                print(result)
-                UsedHistoryManager.shared.updateHistory(history: self.usedHistoryList[index], updateData: result, type: enumType) {
-                    if $0 {
-                        if enumType == .money { self.usedHistoryList[index].input = result }
-                        else if enumType == .etc { self.usedHistoryList[index].inputUsed = result}
-                        self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    UsedHistoryManager.shared.updateHistory(history: self.usedHistoryList[index], updateData: result, type: enumType) {
+                        if $0 {
+                            if enumType == .money { self.usedHistoryList[index].input = result }
+                            else if enumType == .etc { self.usedHistoryList[index].inputUsed = result}
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }

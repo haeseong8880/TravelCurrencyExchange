@@ -56,19 +56,17 @@ class UsedHistoryManager {
         do {
             let realm = try! Realm()
             guard let data = realm.objects(UsedHistoryModel.self).filter("id == %@", history.id).first else { return }
-            print(history.todayCurrency)
+            print(data)
 //            if type == .money {
-//                print(history.todayCurrency)
 //                try realm.write {
-//                    history.input = updateData
+//                    data.input = updateData
 //                }
 //            }
 //            else if type == .etc {
 //                try realm.write {
-//                    history.inputUsed = updateData
+//                    data.inputUsed = updateData
 //                }
 //            }
-            print(data)
             onSuccess(true)
         } catch {
             print("updateMember => \(error.localizedDescription)")
