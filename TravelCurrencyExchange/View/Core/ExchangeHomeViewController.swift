@@ -155,17 +155,9 @@ class ExchangeHomeViewController: UIViewController {
             view.addSubview($0)
         }
         
-//        registerButton.snp.makeConstraints {
-//            $0.top.equalTo(view.safeAreaLayoutGuide).inset(10)
-//            $0.trailing.equalToSuperview().inset(10)
-//            $0.width.equalTo(120)
-//            $0.height.equalTo(40)
-//        }
-        
         noticeLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.leading.equalToSuperview().inset(10)
-//            $0.trailing.equalTo(registerButton.snp.leading)
             $0.trailing.equalToSuperview()
             $0.height.equalTo(20)
         }
